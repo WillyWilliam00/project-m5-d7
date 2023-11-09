@@ -8,6 +8,7 @@ import { DotSpinner } from "@uiball/loaders";
 import ThemeContext from "../Context/theme";
 import GenreContext from "../Context/Genre";
 import { useNavigate } from "react-router-dom";
+import ScrollToTop from "./ScrollToTop";
 
 export default function BookDetails() {
 
@@ -16,20 +17,10 @@ export default function BookDetails() {
   const { dark } = useContext(ThemeContext);
   const { genre, id } = useParams()
   const { MyLibrary } = useContext(GenreContext)
- 
   const navigate = useNavigate()
   
-  // const BooksByGenre = {
-  //       fantasy,
-  //       history,
-  //       horror,
-  //       romance,
-  //       scifi
-  //   }
-   const SelectedBook = MyLibrary[genre].find(book => book.asin === id)
+  const SelectedBook = MyLibrary[genre].find(book => book.asin === id)
 
-
-  
   const getAllComment = useCallback(() => {
     setLoading(true);
     fetch(`https://striveschool-api.herokuapp.com/api/comments/${id}`, {
@@ -61,16 +52,16 @@ export default function BookDetails() {
     return (
       <>
   
-  
-        <Container className={dark ? "bg-dark" : ""}>
-          <Row>
-            <Col>
+      <ScrollToTop />
+        <Container className={dark ? "bg-dark mt-5" : "mt-5"}>
+          <Row className="justify-content-center">
+            <div style={{width: "auto"}} >
               <img src={SelectedBook["img"]} alt="book_img" style={{ height: 500 }} />
-            </Col>
-            <Col xs={7}>
-              <h2>{SelectedBook["title"]}</h2>
-              <h6>{SelectedBook["price"]} €</h6>
-              <h3>Recensioni:</h3>
+            </div>
+            <Col xs={12} md={6}>
+              <h2 className={dark ? "dark-mode" : ""}>{SelectedBook["title"]}</h2>
+              <h6 className={dark ? "dark-mode" : ""}>{SelectedBook["price"]} €</h6>
+              <h3 className={dark ? "dark-mode" : ""}>Recensioni:</h3>
               {loading && (
                 <DotSpinner
                   className="spinner"
@@ -79,7 +70,7 @@ export default function BookDetails() {
                   color="black"
                 />)}
                 {!loading &&
-                (allComment.length === 0 ? <h3 className={dark ? "dark-mode" : ""}>Non ci sono ancora recensioni!</h3> :
+                (allComment.length === 0 ? <p style={{textAlign: "center"}} className={dark ? "dark-mode" : ""}>{"Non ci sono ancora recensioni :("}</p> :
                 <CommentList
                   getAllComment={getAllComment}
                   allComment={allComment} />)}
@@ -87,7 +78,7 @@ export default function BookDetails() {
           </Row>
         </Container>
         <Container style={{ paddingTop: "10px" }}>
-          <AddComment id={id} getAllComment={getAllComment} />
+          <AddComment id={id} getAllComment={getAllComment} setLoading={setLoading} />
         </Container>
   
   

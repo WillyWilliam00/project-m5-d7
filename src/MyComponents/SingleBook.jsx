@@ -19,10 +19,8 @@ export default function SingleBook({img, title, asin, selected, setSelected}) {
                src={img} 
                onClick={() => {
                 if(selected !== asin){
-                    
                     setSelected(asin)
                 } else {
-                    
                     setSelected("")
                 }}} 
                className="img-fluid"

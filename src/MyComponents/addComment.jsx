@@ -4,7 +4,7 @@ import ThemeContext from '../Context/theme';
 
 
 
-function AddComment({ id, getAllComment }) {
+function AddComment({ id, getAllComment, setLoading }) {
 
   const [text, setText] = useState("")
   const [rate, setRate] = useState("")
@@ -24,7 +24,7 @@ function AddComment({ id, getAllComment }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setLoading(true)
     const form = {
       comment: text,
       rate: rate,
@@ -41,8 +41,10 @@ function AddComment({ id, getAllComment }) {
     }).then(
       (response) => {
         if (response.ok) {
-          alert("Salvato!")
           getAllComment()
+          alert("Salvato!")
+          setText("")
+          setRate("")
         } else {
           alert("oh oh")
         }
@@ -52,9 +54,9 @@ function AddComment({ id, getAllComment }) {
 
 
   return (
-    <Row>
-      <Col xs={6} className='m-auto'><Form onSubmit={handleSubmit}>
-      <h4 className={dark ? "dark-mode" : ""} style={{textAlign: "center"}}>Inserisci una recensione!</h4>
+    <Row className='mt-3'>
+      <Col xs={12} md={6} className='m-auto'><Form onSubmit={handleSubmit}>
+      <h4 className={dark ? "dark-mode" : ""} style={{textAlign: "center"}}>Inserisci una recensione:</h4>
       <Form.Group className="mb-3 mt-2" controlId="text">
         <Form.Label className={dark ? "dark-mode" : ""}>Cosa ne pensi?</Form.Label>
         <Form.Control type="text" placeholder="Scrivi la tua recensione" required value={text} onChange={(e) => setText(e.target.value)} />
