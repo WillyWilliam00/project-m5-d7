@@ -10,18 +10,6 @@ function AddComment({ id, getAllComment, setLoading }) {
   const [rate, setRate] = useState("")
   const { dark } = useContext(ThemeContext)
 
-  // function GetComment(){
-  //   setLoading(true)
-  //   fetch(`https://striveschool-api.herokuapp.com/api/comments/${id}`, {
-  //   headers: {
-  //     "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTM3YWIzZmU3NDZhMDAwMTQ4MTQzMmEiLCJpYXQiOjE2OTg2ODI5NTQsImV4cCI6MTY5OTg5MjU1NH0.HHBtM4-HlPu0aYhgFK4ucJa0J5WmqpZZFSS5KULk3xo"
-  //   }})
-  //   .then(r => r.json())
-  //   .then(setAllComment)
-  //   .catch(()=>alert("oh oh"))
-  //   .finally(()=>setLoading(false))     
-  // }
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true)

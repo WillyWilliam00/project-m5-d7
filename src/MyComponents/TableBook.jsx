@@ -36,7 +36,7 @@ export default function TableBook({ name }) {
                 <Col>
                     <Row className="row-gap-5">
                         {BooksByChoise ? BooksByChoise.filter(usingQuery).map(book => (
-                            <SingleBook img={book.img} title={book.title} key={book.asin} asin={book.asin} selected={selected} setSelected={setSelected} />
+                            <SingleBook img={book.img} title={book.title} key={book.asin} asin={book.asin} price={book.price} selected={selected} setSelected={setSelected} />
                         )) : <h1 style={{textAlign: "center"}}>Scegli un genere!</h1>}
                     </Row>
                 </Col>
