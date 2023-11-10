@@ -1,25 +1,23 @@
-
 import { useState, useEffect, useContext, useCallback } from "react";
-import { useParams } from "react-router-dom";
-import { Col, Container, Row, } from "react-bootstrap";
+import { useParams, useNavigate } from "react-router-dom";
+import { Col, Container, Row } from "react-bootstrap";
+import cn from "classnames";
 import AddComment from "./AddComment";
 import CommentList from "./CommentList";
 import { DotSpinner } from "@uiball/loaders";
 import ThemeContext from "../Context/theme";
 import GenreContext from "../Context/Genre";
-import { useNavigate } from "react-router-dom";
 import ScrollToTop from "./ScrollToTop";
 
 export default function BookDetails() {
-
   const [allComment, setAllComment] = useState([]);
   const [loading, setLoading] = useState();
   const { dark } = useContext(ThemeContext);
-  const { genre, id } = useParams()
-  const { MyLibrary } = useContext(GenreContext)
-  const navigate = useNavigate()
-  
-  const SelectedBook = MyLibrary[genre].find(book => book.asin === id)
+  const { genre, id } = useParams();
+  const { MyLibrary } = useContext(GenreContext);
+  const navigate = useNavigate();
+
+  const selectedBook = MyLibrary[genre].find((book) => book.asin === id);
 
   const getAllComment = useCallback(() => {
     setLoading(true);
@@ -31,9 +29,8 @@ export default function BookDetails() {
     })
       .then((r) => {
         if (r.ok) {
-          return r.json()
+          return r.json();
         } else {
-
         }
       })
       .then(setAllComment)
@@ -45,50 +42,55 @@ export default function BookDetails() {
     getAllComment();
   }, [getAllComment]);
 
- 
-  if(!SelectedBook) {
-    navigate("/404")
+  if (!selectedBook) {
+    navigate("/404");
   } else {
     return (
       <>
-  
-      <ScrollToTop />
-        <Container className={dark ? "bg-dark mt-5" : "mt-5"}>
+        <ScrollToTop />
+        <Container className={cn(dark && "bg-dark", "mt-5")}>
           <Row className="justify-content-center">
-            <div style={{width: "auto"}} >
-              <img src={SelectedBook["img"]} alt="book_img" style={{ height: 500 }} />
+            <div style={{ width: "auto" }}>
+              <img
+                src={selectedBook["img"]}
+                alt="book_img"
+                style={{ height: 500 }}
+              />
             </div>
             <Col xs={12} md={6}>
-              <h2 className={dark ? "dark-mode" : ""}>{SelectedBook["title"]}</h2>
-              <h6 className={dark ? "dark-mode" : ""}>{SelectedBook["price"]} €</h6>
-              <h3 className={dark ? "dark-mode" : ""}>Recensioni:</h3>
+              <h2>{selectedBook["title"]}</h2>
+              <h6>{selectedBook["price"]} €</h6>
+              <h3>Recensioni:</h3>
               {loading && (
                 <DotSpinner
                   className="spinner"
                   size={40}
                   speed={0.9}
                   color="black"
-                />)}
-                {!loading &&
-                (allComment.length === 0 ? <p style={{textAlign: "center"}} className={dark ? "dark-mode" : ""}>{"Non ci sono ancora recensioni :("}</p> :
-                <CommentList
-                  getAllComment={getAllComment}
-                  allComment={allComment} />)}
+                />
+              )}
+              {!loading &&
+                (allComment.length === 0 ? (
+                  <p style={{ textAlign: "center" }}>
+                    {"Non ci sono ancora recensioni :("}
+                  </p>
+                ) : (
+                  <CommentList
+                    getAllComment={getAllComment}
+                    allComment={allComment}
+                  />
+                ))}
             </Col>
           </Row>
         </Container>
         <Container style={{ paddingTop: "10px" }}>
-          <AddComment id={id} getAllComment={getAllComment} setLoading={setLoading} />
+          <AddComment
+            id={id}
+            getAllComment={getAllComment}
+            setLoading={setLoading}
+          />
         </Container>
-  
-  
       </>
-  
-  
-  
-    )
+    );
   }
-
-  
-
 }

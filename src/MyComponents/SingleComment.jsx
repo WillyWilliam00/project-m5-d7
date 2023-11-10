@@ -2,30 +2,22 @@ import { useContext } from "react";
 import { Col, Button } from "react-bootstrap";
 import { Trash } from "react-bootstrap-icons";
 import ThemeContext from "../Context/theme";
+import cn from "classnames";
 
-export default function SingleComment({ getAllComment, ...comment }){
-const { dark } = useContext(ThemeContext);
-
-  // function GetComment(){
-  //     setLoading(true)
-  //     fetch(`https://striveschool-api.herokuapp.com/api/comments/${asin}`, {
-  //     headers: {
-  //     "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTM3YWIzZmU3NDZhMDAwMTQ4MTQzMmEiLCJpYXQiOjE2OTg2ODI5NTQsImV4cCI6MTY5OTg5MjU1NH0.HHBtM4-HlPu0aYhgFK4ucJa0J5WmqpZZFSS5KULk3xo"
-  //     }})
-  //     .then(r => r.json())
-  //     .then(setAllComment)
-  //     .catch(()=>alert("oh oh"))
-  //     .finally(()=>setLoading(false))
-  //   }
+export default function SingleComment({ getAllComment, ...comment }) {
+  const { dark } = useContext(ThemeContext);
 
   const deleteComment = () => {
-    fetch(`https://striveschool-api.herokuapp.com/api/comments/${comment.commentId}`, {
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTM3YWIzZmU3NDZhMDAwMTQ4MTQzMmEiLCJpYXQiOjE2OTg2ODI5NTQsImV4cCI6MTY5OTg5MjU1NH0.HHBtM4-HlPu0aYhgFK4ucJa0J5WmqpZZFSS5KULk3xo",
+    fetch(
+      `https://striveschool-api.herokuapp.com/api/comments/${comment.commentId}`,
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTM3YWIzZmU3NDZhMDAwMTQ4MTQzMmEiLCJpYXQiOjE2OTg2ODI5NTQsImV4cCI6MTY5OTg5MjU1NH0.HHBtM4-HlPu0aYhgFK4ucJa0J5WmqpZZFSS5KULk3xo",
+        },
+        method: "DELETE",
       },
-      method: "DELETE",
-    }).then((response) => {
+    ).then((response) => {
       if (response.ok) {
         alert("Eliminato con successo!");
         getAllComment();
@@ -38,7 +30,6 @@ const { dark } = useContext(ThemeContext);
   return (
     <>
       <Col
-        
         style={{
           marginBlock: 5,
           borderTop: "1px solid lightgrey",
@@ -48,17 +39,11 @@ const { dark } = useContext(ThemeContext);
       >
         <Col xs={10}>
           <div className="d-flex justify-content-between mb-2">
-            <span className={`m-0 fw-bolder ${dark ? "dark-mode" : ""}`}>
-              Rating:
-            </span>
-            <p className={`m-0 fw-bolder ${dark ? "text-light" : ""}`}>
-              {comment.commentRate}
-            </p>
+            <p className={"m-0 fw-bolder"}>Rating:</p>
+            <p className={`m-0 fw-bolder`}>{comment.commentRate}</p>
           </div>
           <div>
-            <span className={`mb-3 fw-bolder ${dark ? "dark-mode" : ""}`}>
-              Recensione:
-            </span>
+            <p className={`mb-3 fw-bolder`}>Recensione:</p>
             <p
               style={{
                 minHeight: 50,

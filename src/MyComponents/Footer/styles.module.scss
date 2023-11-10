@@ -1,0 +1,10 @@
+.footerDiv {
+  width: fit-content;
+  margin: auto;
+}
+@media only screen and (max-width: 600px) {
+  .footerDiv {
+    width: fit-content;
+    margin: inherit;
+  }
+}
