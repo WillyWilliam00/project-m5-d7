@@ -1,9 +1,15 @@
 import { Row, Col, Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
+import ThemeContext from "../../Context/theme";
+import { useContext } from "react";
+import cn from "classnames";
+
 
 function Footer() {
+
+  const {dark} = useContext(ThemeContext)
   return (
-    <Container fluid className="bg-dark text-light mt-5">
+    <Container fluid className={cn( dark ? styles.bgDark : styles.bgLight , "text-light mt-5")}>
       <Row className="d-flex justify-content-center pt-5">
         <Col xs={12} sm={4}>
           <div className={styles.footerDiv}>

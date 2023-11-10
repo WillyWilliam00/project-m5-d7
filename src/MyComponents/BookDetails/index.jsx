@@ -2,12 +2,13 @@ import { useState, useEffect, useContext, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 import cn from "classnames";
-import AddComment from "./AddComment";
-import CommentList from "./CommentList";
+import AddComment from "../AddComment";
+import CommentList from "../CommentList";
 import { DotSpinner } from "@uiball/loaders";
-import ThemeContext from "../Context/theme";
-import GenreContext from "../Context/Genre";
-import ScrollToTop from "./ScrollToTop";
+import ThemeContext from "../../Context/theme";
+import GenreContext from "../../Context/Genre";
+import ScrollToTop from "../ScrollToTop";
+import styles from "./styles.module.scss"
 
 export default function BookDetails() {
   const [allComment, setAllComment] = useState([]);
@@ -50,7 +51,7 @@ export default function BookDetails() {
         <ScrollToTop />
         <Container className={cn(dark && "bg-dark", "mt-5")}>
           <Row className="justify-content-center">
-            <div style={{ width: "auto" }}>
+            <div className="w-auto">
               <img
                 src={selectedBook["img"]}
                 alt="book_img"
@@ -71,7 +72,7 @@ export default function BookDetails() {
               )}
               {!loading &&
                 (allComment.length === 0 ? (
-                  <p style={{ textAlign: "center" }}>
+                  <p className={styles.textCenter}>
                     {"Non ci sono ancora recensioni :("}
                   </p>
                 ) : (
@@ -83,7 +84,7 @@ export default function BookDetails() {
             </Col>
           </Row>
         </Container>
-        <Container style={{ paddingTop: "10px" }}>
+        <Container className="pt-2">
           <AddComment
             id={id}
             getAllComment={getAllComment}

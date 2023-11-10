@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { MoonFill, BrightnessHighFill } from "react-bootstrap-icons";
 import { Link, useParams } from "react-router-dom";
 import styles from "./styles.module.scss";
+import SwitchMode from "../SwitchMode";
 
 function MyNavBar({ name, setName }) {
   const { dark, setDark } = useContext(ThemeContext);
@@ -13,8 +14,7 @@ function MyNavBar({ name, setName }) {
     <Navbar
       sticky="top"
       expand="lg"
-      className="ps-1"
-      style={{ opacity: ".9" }}
+      className={`${styles.opacity} ps-1`}
       bg={dark ? "success-subtle" : "info-subtle"}
       data-bs-theme={dark ? "light" : "dark"}
     >
@@ -47,14 +47,17 @@ function MyNavBar({ name, setName }) {
             }}
           />
         </label>
+        
+          <SwitchMode onClick={() => setDark(!dark)} />
+        
+
         <Button
-          className="mx-5"
-          style={{ padding: "3px 10px 5px 10px" }}
+          className={`${styles.DarkLightBtn} mx-5`}
           variant={dark ? "primary" : "secondary"}
           onClick={() => setDark(!dark)}
         >
           {dark ? (
-            <BrightnessHighFill style={{ color: "yellow" }} />
+            <BrightnessHighFill className="text-warning" />
           ) : (
             <MoonFill />
           )}

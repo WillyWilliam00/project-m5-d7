@@ -1,3 +1,9 @@
 .select {
   outline: 5px solid red;
 }
+
+.cardImg {
+  cursor: pointer;
+  height: 450px;
+  object-fit: cover;
+}

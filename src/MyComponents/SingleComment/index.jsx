@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { Col, Button } from "react-bootstrap";
 import { Trash } from "react-bootstrap-icons";
-import ThemeContext from "../Context/theme";
-import cn from "classnames";
+import ThemeContext from "../../Context/theme";
+import styles from "./styles.module.scss"
+import cn from "classnames"
 
 export default function SingleComment({ getAllComment, ...comment }) {
   const { dark } = useContext(ThemeContext);
@@ -30,30 +31,18 @@ export default function SingleComment({ getAllComment, ...comment }) {
   return (
     <>
       <Col
-        style={{
-          marginBlock: 5,
-          borderTop: "1px solid lightgrey",
-          paddingTop: "10px",
-        }}
-        className="d-flex justify-content-between align-items-start mx-auto"
+        
+        className={`d-flex justify-content-between align-items-start mx-auto pt-2 my-1 ${styles.borderTopLightGray}`}
       >
         <Col xs={10}>
           <div className="d-flex justify-content-between mb-2">
-            <p className={"m-0 fw-bolder"}>Rating:</p>
-            <p className={`m-0 fw-bolder`}>{comment.commentRate}</p>
+            <p className="m-0 fw-bolder">Rating:</p>
+            <p className="m-0 fw-bolder">{comment.commentRate}</p>
           </div>
           <div>
-            <p className={`mb-3 fw-bolder`}>Recensione:</p>
+            <p className="mb-3 fw-bolder">Recensione:</p>
             <p
-              style={{
-                minHeight: 50,
-                wordBreak: "break-word",
-                maxHeight: 100,
-                border: "1px solid lightgrey",
-                overflow: "auto",
-              }}
-              className={`my-3 ps-2 ${dark ? "text-light" : ""}`}
-            >
+              className={cn(dark && "text-light" , `my-3 ps-2 ${styles.boxTextReview}`)}>
               {comment.commmentText}
             </p>
           </div>

@@ -1,0 +1,11 @@
+.borderTopLightGray {
+    border-top: 1px solid lightgrey;
+}
+
+.boxTextReview {
+    min-height: 50px;
+    word-break: break-word;
+    max-height: 100px;
+    border: 1px solid lightgrey;
+    overflow: auto;
+}

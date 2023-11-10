@@ -1,11 +1,10 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Button, Form, Row, Col } from "react-bootstrap";
-import ThemeContext from "../Context/theme";
+import styles from "./styles.module.scss"
 
 function AddComment({ id, getAllComment, setLoading }) {
   const [text, setText] = useState("");
   const [rate, setRate] = useState("");
-  const { dark } = useContext(ThemeContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,7 +39,7 @@ function AddComment({ id, getAllComment, setLoading }) {
     <Row className="mt-3">
       <Col xs={12} md={6} className="m-auto">
         <Form onSubmit={handleSubmit}>
-          <h4 style={{ textAlign: "center" }}>Inserisci una recensione:</h4>
+          <h4 className={styles.textCenter}>Inserisci una recensione:</h4>
           <Form.Group className="mb-3 mt-2" controlId="text">
             <Form.Label>
               Cosa ne pensi?

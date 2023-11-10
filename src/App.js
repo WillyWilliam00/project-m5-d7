@@ -15,6 +15,7 @@ import horror from "./books/horror.json";
 import romance from "./books/romance.json";
 import scifi from "./books/scifi.json";
 import cn from "classnames";
+import BackToTopBtn from "./MyComponents/BackToTopbtn";
 
 function App() {
   const [name, setName] = useState("");
@@ -66,6 +67,7 @@ function App() {
             <Route path="/404" element={<NotFound />} />
           </Routes>
         </GenreContext.Provider>
+        <BackToTopBtn/>
         <Footer />
       </ThemeContext.Provider>
     </div>

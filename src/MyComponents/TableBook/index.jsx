@@ -3,6 +3,9 @@ import { useContext, useState } from "react";
 import SingleBook from "../SingleBook";
 import GenreContext from "../../Context/Genre";
 import { useNavigate, useParams } from "react-router-dom";
+import styles from "./styles.module.scss"
+import cn from "classnames"
+import ThemeContext from "../../Context/theme";
 
 export default function TableBook({ name }) {
   const usingQuery = (book) =>
@@ -12,11 +15,13 @@ export default function TableBook({ name }) {
   const navigate = useNavigate();
   const { MyLibrary } = useContext(GenreContext);
   const BooksByChoise = MyLibrary[genre];
+  const {dark} = useContext(ThemeContext)
+ 
 
   return (
     <Container className="my-5">
       <Row>
-        <Col>
+        <Col className={cn(dark && "dark-mode-tabs")}>
           <Tabs
             id="books"
             activeKey={genre ? genre : ""}
@@ -49,11 +54,12 @@ export default function TableBook({ name }) {
                 />
               ))
             ) : (
-              <h1 style={{ textAlign: "center" }}>Scegli un genere!</h1>
+              <h1 className={styles.textCenter}>SCEGLI UN GENERE</h1>
             )}
           </Row>
         </Col>
       </Row>
+      
     </Container>
   );
 }

@@ -5,8 +5,8 @@ function Jumbotron() {
   return (
     <Container>
       <div className="jumbotron">
-        <h1 className={`display-4 fw-bolder`}>EPICBOOKS</h1>
-        <p className={`lead `}>
+        <h1 className="display-4 fw-bolder">EPICBOOKS</h1>
+        <p className="lead">
           Esplora mondi infiniti tra le pagine di un libro...
         </p>
 
@@ -19,7 +19,7 @@ function Jumbotron() {
             />
           </Col>
           <Col xs={12} sm={6} className="d-flex align-items-end">
-            <p className={`lead`}>
+            <p className="lead">
               In un mondo dove ogni pagina è una porta segreta verso mondi
               straordinari, il nostro ecommerce di libri ti offre un viaggio
               senza fine tra storie coinvolgenti, saggi illuminanti e avventure
