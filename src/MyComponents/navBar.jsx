@@ -3,7 +3,6 @@ import ThemeContext from "../Context/theme";
 import { useContext } from "react";
 import { MoonFill, BrightnessHighFill } from "react-bootstrap-icons";
 import { Link, useParams } from "react-router-dom";
-
 function MyNavBar({ name, setName }) {
   const { dark, setDark } = useContext(ThemeContext);
   const { genre } = useParams()
@@ -32,8 +31,6 @@ function MyNavBar({ name, setName }) {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           <Link to={`/${genre}`}className="nav-link">Home</Link>
-          <Nav.Link href="#link">Aboute</Nav.Link>
-          <Nav.Link href="#link">Browse</Nav.Link>
         </Nav>
         <label className="ms-auto pe-5">
           <input
@@ -54,7 +51,7 @@ function MyNavBar({ name, setName }) {
         >
           {dark ? <BrightnessHighFill style={{color: "yellow"}} /> : <MoonFill />}
         </Button>
-      </Navbar.Collapse>
+        </Navbar.Collapse>
     </Navbar>
   );
 }

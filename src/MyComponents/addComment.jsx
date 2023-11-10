@@ -3,7 +3,6 @@ import { Button, Form, Row, Col } from 'react-bootstrap';
 import ThemeContext from '../Context/theme';
 
 
-
 function AddComment({ id, getAllComment, setLoading }) {
 
   const [text, setText] = useState("")

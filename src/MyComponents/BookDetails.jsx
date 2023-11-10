@@ -2,8 +2,8 @@
 import { useState, useEffect, useContext, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { Col, Container, Row, } from "react-bootstrap";
-import AddComment from "./addComment";
-import CommentList from "./commentList";
+import AddComment from "./AddComment";
+import CommentList from "./CommentList";
 import { DotSpinner } from "@uiball/loaders";
 import ThemeContext from "../Context/theme";
 import GenreContext from "../Context/Genre";

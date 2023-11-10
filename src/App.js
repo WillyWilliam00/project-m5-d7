@@ -1,5 +1,5 @@
 import './App.css';
-import MyNavBar from "./MyComponents/navBar"
+import MyNavBar from './MyComponents/navBar';
 import Jumbotron from "./MyComponents/Welcome"
 import Footer from "./MyComponents/Footer"
 import TableBook from "./MyComponents/TableBook"
@@ -29,9 +29,9 @@ function App() {
 }
 
   return (
-    <>
+    <div style={dark ? { background: "#212529" } : { background: "white" }}>
         <ThemeContext.Provider value={{ dark, setDark }}>
-          <div style={dark ? { background: "#212529" } : { background: "white" }}>
+          
             <GenreContext.Provider value={{MyLibrary}}>
               <Routes>
                 <Route path="/" element={<><MyNavBar name={name} setName={setName}/><Jumbotron /><TableBook name={name} /></>}></Route>
@@ -41,10 +41,10 @@ function App() {
               </Routes>
             </GenreContext.Provider>
             <Footer />
-          </div>
+          
         </ThemeContext.Provider>
      
-    </>
+    </div>
   );
 }
 
