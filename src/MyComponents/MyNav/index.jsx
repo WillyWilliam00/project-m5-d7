@@ -1,13 +1,12 @@
-import { Nav, Navbar, Button } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import ThemeContext from "../../Context/theme";
 import { useContext } from "react";
-import { MoonFill, BrightnessHighFill } from "react-bootstrap-icons";
 import { Link, useParams } from "react-router-dom";
 import styles from "./styles.module.scss";
 import SwitchMode from "../SwitchMode";
 
 function MyNavBar({ name, setName }) {
-  const { dark, setDark } = useContext(ThemeContext);
+  const { dark } = useContext(ThemeContext);
   const { genre } = useParams();
 
   return (
@@ -47,21 +46,8 @@ function MyNavBar({ name, setName }) {
             }}
           />
         </label>
-        
-          <SwitchMode onClick={() => setDark(!dark)} />
-        
-
-        <Button
-          className={`${styles.DarkLightBtn} mx-5`}
-          variant={dark ? "primary" : "secondary"}
-          onClick={() => setDark(!dark)}
-        >
-          {dark ? (
-            <BrightnessHighFill className="text-warning" />
-          ) : (
-            <MoonFill />
-          )}
-        </Button>
+        <SwitchMode/>
+       
       </Navbar.Collapse>
     </Navbar>
   );

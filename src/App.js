@@ -18,8 +18,11 @@ import cn from "classnames";
 import BackToTopBtn from "./MyComponents/BackToTopbtn";
 
 function App() {
+
+  const isDark = window.matchMedia("(prefers-color-scheme:dark)").matches //modalità impostata dall'utente nel proprio pc 
   const [name, setName] = useState("");
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(isDark);
+
 
   const MyLibrary = {
     fantasy,
@@ -35,8 +38,7 @@ function App() {
         <GenreContext.Provider value={{ MyLibrary }}>
           <Routes>
             <Route
-              path="/"
-              element={
+              path="/" element={
                 <>
                   <MyNavBar name={name} setName={setName} />
                   <Jumbotron />
@@ -45,8 +47,7 @@ function App() {
               }
             ></Route>
             <Route
-              path="/:genre"
-              element={
+              path="/:genre"element={
                 <>
                   <MyNavBar name={name} setName={setName} />
                   <Jumbotron />
@@ -55,10 +56,8 @@ function App() {
               }
             ></Route>
             <Route
-              path="/:genre/:id"
-              element={
+              path="/:genre/:id" element={
                 <>
-                  {" "}
                   <MyNavBar name={name} setName={setName} />
                   <BookDetails />
                 </>

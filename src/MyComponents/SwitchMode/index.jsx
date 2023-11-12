@@ -1,12 +1,14 @@
 import "./index.scss"
-
+import ThemeContext from "../../Context/theme"
+import { useContext, useState } from "react"
 
 export default function SwitchMode() {
+
+    const {dark, setDark} = useContext(ThemeContext)
+    const [checked, setChecked] = useState(dark);
     return (
-       
-            <button>
-                <label className="theme-switch">
-                    <input type="checkbox" className="theme-switch__checkbox" />
+                <label className="theme-switch me-5" >
+                    <input type="checkbox" checked={checked} onChange={() => {setDark(!dark); setChecked(!dark)}} className="theme-switch__checkbox" />
                     <div className="theme-switch__container">
                         <div className="theme-switch__clouds" />
                         <div className="theme-switch__stars-container">
@@ -30,9 +32,8 @@ export default function SwitchMode() {
                         </div>
                     </div>
                 </label>
-            </button>
-       
-
+            
+               
     )
 
 }
