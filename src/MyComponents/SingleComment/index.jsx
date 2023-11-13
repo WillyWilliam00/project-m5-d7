@@ -50,7 +50,7 @@ export default function SingleComment({ getAllComment, ...comment }) {
             </p>
           </div>
         </Col>
-        <Button variant="outline-danger" onClick={deleteComment} value={"Ciao"}>
+        <Button variant="outline-danger" onClick={deleteComment} className="me-2">
           <Trash />
         </Button>
       </Col>

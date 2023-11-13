@@ -19,7 +19,8 @@ function AddComment({ id, getAllComment, setLoading }) {
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Bearer eyJfaWQiOiI2NTM3YWIzZmU3NDZhMDAwMTQ4MTQzMmEiLCJpYXQiOjE2OTg2ODI5NTQsImV4cCI6MTY5OTg5MjU1NH0.HHBtM4-HlPu0aYhgFK4ucJa0J5WmqpZZFSS5KULk3xo",
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTM3YWIzZmU3NDZhMDAwMTQ4MTQzMmEiLCJpYXQiOjE2OTk4OTQwNzIsImV4cCI6MTcwMTEwMzY3Mn0.gUU7worP2QWWOjDUEJL6DX-CBtmRDMUiFM7FFCORO4A",
+        
       },
       method: "POST",
       body: JSON.stringify(form),

@@ -44,7 +44,7 @@
   },
   "jest": {
     "transformIgnorePatterns": [
-      "<rootDir>/node_modules/(?!@uiball)"
+      "<rootDir>/node_modules/(?!@uiball/loaders)"
     ]
   }
 }
