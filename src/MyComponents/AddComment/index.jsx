@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Form, Row, Col } from "react-bootstrap";
-import styles from "./styles.module.scss"
+import styles from "./styles.module.scss";
 
 function AddComment({ id, getAllComment, setLoading }) {
   const [text, setText] = useState("");
@@ -19,7 +19,7 @@ function AddComment({ id, getAllComment, setLoading }) {
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTM3YWIzZmU3NDZhMDAwMTQ4MTQzMmEiLCJpYXQiOjE2OTg2ODI5NTQsImV4cCI6MTY5OTg5MjU1NH0.HHBtM4-HlPu0aYhgFK4ucJa0J5WmqpZZFSS5KULk3xo",
+          "Bearer eyJfaWQiOiI2NTM3YWIzZmU3NDZhMDAwMTQ4MTQzMmEiLCJpYXQiOjE2OTg2ODI5NTQsImV4cCI6MTY5OTg5MjU1NH0.HHBtM4-HlPu0aYhgFK4ucJa0J5WmqpZZFSS5KULk3xo",
       },
       method: "POST",
       body: JSON.stringify(form),
@@ -41,9 +41,7 @@ function AddComment({ id, getAllComment, setLoading }) {
         <Form onSubmit={handleSubmit}>
           <h4 className={styles.textCenter}>Inserisci una recensione:</h4>
           <Form.Group className="mb-3 mt-2" controlId="text">
-            <Form.Label>
-              Cosa ne pensi?
-            </Form.Label>
+            <Form.Label>Cosa ne pensi?</Form.Label>
             <Form.Control
               type="text"
               placeholder="Scrivi la tua recensione"
@@ -53,9 +51,7 @@ function AddComment({ id, getAllComment, setLoading }) {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="stars">
-            <Form.Label>
-              Quanto ti è piaciuto?
-            </Form.Label>
+            <Form.Label>Quanto ti è piaciuto?</Form.Label>
             <Form.Control
               type="number"
               min="1"

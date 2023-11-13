@@ -10,21 +10,28 @@ export default function SingleBook({ selected, setSelected, ...book }) {
   const { genre } = useParams();
 
   return (
-    <Col xs={12} sm={6} lg={3} className="d-flex">
+    <Col xs={12} sm={6} lg={3} className="d-flex" data-testid="book-card">
       <Card
-        className={cn(selected === book.asin && styles.select," border border-0", )}>
-          <Card.Img
+        className={cn(
+          selected === book.asin && styles.select,
+          " border border-0",
+        )}
+      >
+        <Card.Img
           className={styles.cardImg}
           variant="top"
           src={book.img}
           onClick={() => {
             selected !== book.asin ? setSelected(book.asin) : setSelected("");
           }}
-          
         />
 
         <Card.Body
-          className={cn(dark ? "bg-success-subtle" : "bg-info-subtle","d-flex flex-column",)}>
+          className={cn(
+            dark ? "bg-success-subtle" : "bg-info-subtle",
+            "d-flex flex-column",
+          )}
+        >
           <Card.Title>{book.title}</Card.Title>
           <h5>Prezzo: {book.price} €</h5>
           <Link to={`/${genre}/${book.asin}`}>

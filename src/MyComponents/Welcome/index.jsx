@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 
 function Jumbotron() {
   return (
-    <Container>
+    <Container data-testid="welcome">
       <div className="jumbotron">
         <h1 className="display-4 fw-bolder">EPICBOOKS</h1>
         <p className="lead">
